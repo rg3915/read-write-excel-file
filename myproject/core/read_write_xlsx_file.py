@@ -1,5 +1,5 @@
 import openpyxl
-from random import randint
+from random import randint, random
 
 
 def read_sheet(filename):
@@ -33,7 +33,12 @@ def write_sheet(filename):
 
     max_row = ws.max_row
 
-    for row in ws.iter_rows(min_col=3, max_col=3, min_row=2, max_row=max_row):
-        row[0].value = randint(1, 10)
+    for row in range(2, max_row + 1):
+        ws.cell(row=row, column=3).value = round(randint(1, 10) * random(), 2)
+        ws.cell(row=row, column=4).value = f'=B{row}*C{row}'
+
+    # Total
+    ws.cell(row=max_row + 1, column=3).value = 'Total'
+    ws.cell(row=max_row + 1, column=4).value = f'=SUM(D2:D{max_row})'
 
     return wb
