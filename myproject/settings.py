@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # thirty apps
     'widget_tweaks',
-    'daterange_filter',
     'django_extensions',
     # my apps
     'myproject.core',
@@ -127,4 +126,3 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_URL = '/admin/login/'
-

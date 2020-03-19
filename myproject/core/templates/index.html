@@ -2,11 +2,31 @@
 
 {% block content %}
   <div class="jumbotron">
-    <h1>Bem vindo!</h1>
-    <a href="{% url 'core:person_add' %}">
-      <button id="new_customer" type="button" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus"></span> Cadastre-se
-      </button>
+    <h4>Read and Write Excel file with <a href="https://openpyxl.readthedocs.io/en/stable/" target="_blank">openpyxl</a> on <a href="https://www.djangoproject.com/" target="_blank">Django</a> application.</h4>
+    <a href="">
     </a>
   </div>
+
+  <div class="bs-example">
+    <form class="form-horizontal" action="." method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label class="control-label col-sm-3 col-lg-3">
+          Choose your xlsx file
+        </label>
+        <div class="col-sm-3 col-lg-3">
+          <input id="id_my_file" name="my_file" type="file" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-3 col-sm-offset-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
 {% endblock content %}
