@@ -1,8 +1,5 @@
 import openpyxl
-from datetime import datetime
-
-
-MDATA = datetime.now().strftime('%Y-%m-%d-%H%M%S')
+from random import randint
 
 
 def read_sheet(filename):
@@ -25,3 +22,18 @@ def read_sheet(filename):
         items.append(sub_items)
 
     return items
+
+
+def write_sheet(filename):
+    '''
+    Write on sheet.
+    '''
+    wb = openpyxl.load_workbook(filename)
+    ws = wb['Sheet1']
+
+    max_row = ws.max_row
+
+    for row in ws.iter_rows(min_col=3, max_col=3, min_row=2, max_row=max_row):
+        row[0].value = randint(1, 10)
+
+    return wb
